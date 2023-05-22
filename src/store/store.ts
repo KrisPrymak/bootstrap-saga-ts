@@ -3,13 +3,14 @@ import createSagaMiddleware from 'redux-saga';
 import postsSlice, { GET_POSTS, getPostsSaga } from './postsSlice';
 import { takeEvery } from "redux-saga/effects";
 import commentsSlice, { GET_COMMENTS, getCommentsSaga } from "./commentsSlice";
-import userSlice from './userSlice';
+import userSlice, { GET_USER, getUserSaga } from './userSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
 function* sagas() {
     yield takeEvery(GET_POSTS, getPostsSaga)
     yield takeEvery(GET_COMMENTS, getCommentsSaga)
+    yield takeEvery(GET_USER, getUserSaga)
 }
 
 export const store = configureStore({
