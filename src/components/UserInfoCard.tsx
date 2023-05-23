@@ -8,7 +8,7 @@ interface IUserInfoCard {
 
 const UserInfoCard: React.FC<IUserInfoCard> = ({ currentUser }) => {
     return (
-        <Card style={{ width: '100%' }} border="info" className='m-auto'>
+        <Card style={{ width: '60%' }} border="info" className='m-auto mb-5'>
             <Card.Header>
                 <Card.Title className='d-flex'>
                     <Image
