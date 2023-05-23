@@ -4,10 +4,11 @@ import { Container } from 'react-bootstrap';
 import { useAppSelector } from '../store/store';
 import Loader from './Loader';
 import Posts from './Posts';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const UserPage = () => {
-    const currentUser = useAppSelector(state => state.userSlice.user)
-    const currentUserPosts = useAppSelector(state => state.userSlice.posts)
+    const currentUser = useLocalStorage('currentUser')
+    const currentUserPosts = useLocalStorage('currentUserPosts')
     const loadingStatus = useAppSelector(state => state.userSlice.loading)
 
     return (

@@ -60,9 +60,11 @@ const userSlice = createSlice({
   reducers: {
     getUserSuccess: (state, action) => {
       state.user = action.payload;
+      localStorage.setItem('currentUser', JSON.stringify(action.payload));
     },
     getUserPostsSuccess: (state, action) => {
       state.posts = action.payload;
+      localStorage.setItem('currentUserPosts', JSON.stringify(action.payload));
     },
     isLoading: (state, action) => {
       state.loading = action.payload;
