@@ -11,9 +11,9 @@ function App() {
     <>
       <Navibar />
       <Routes>
-        <Route path='/' element={<MainPage /> }/>
-        <Route path='/aboutMe' element={<AboutMe />}/>
-        <Route path='/userPage/:userId' element={<UserPage />}/>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/aboutMe' element={<AboutMe />} />
+        <Route path='/userPage/:userId' element={<UserPage />} />
       </Routes>
     </>
   );

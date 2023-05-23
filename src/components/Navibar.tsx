@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 const Navibar = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const currentPathName = window.location.pathname;
 
     return (

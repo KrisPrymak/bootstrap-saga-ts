@@ -5,14 +5,14 @@ import { getPosts } from '../store/postsSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 
 const MainPage = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
+
+    const postList = useAppSelector(state => state.postsSlice.list);
+    const loadingStatus = useAppSelector(state => state.postsSlice.loading);
 
     useEffect(() => {
         dispatch(getPosts())
     }, [dispatch])
-
-    const postList = useAppSelector(state => state.postsSlice.list)
-    const loadingStatus = useAppSelector(state => state.postsSlice.loading)
 
     return (
         <>

@@ -49,7 +49,9 @@ export function* getUserSaga(payload: any) {
   yield delay(500);
   const responseUser: AxiosResponse = yield userAPI.getUser(payload.payload);
   yield put(getUserSuccess(responseUser.data));
-  const responsePosts: AxiosResponse = yield postsAPI.getUserPosts(payload.payload);
+  const responsePosts: AxiosResponse = yield postsAPI.getUserPosts(
+    payload.payload
+  );
   yield put(getUserPostsSuccess(responsePosts.data));
   yield put(isLoading(false));
 }
@@ -60,11 +62,11 @@ const userSlice = createSlice({
   reducers: {
     getUserSuccess: (state, action) => {
       state.user = action.payload;
-      localStorage.setItem('currentUser', JSON.stringify(action.payload));
+      localStorage.setItem("currentUser", JSON.stringify(action.payload));
     },
     getUserPostsSuccess: (state, action) => {
       state.posts = action.payload;
-      localStorage.setItem('currentUserPosts', JSON.stringify(action.payload));
+      localStorage.setItem("currentUserPosts", JSON.stringify(action.payload));
     },
     isLoading: (state, action) => {
       state.loading = action.payload;
@@ -75,5 +77,6 @@ const userSlice = createSlice({
 export const GET_USER = "users/getUser";
 export const getUser = createAction(GET_USER);
 
-export const { getUserSuccess, getUserPostsSuccess, isLoading } = userSlice.actions;
+export const { getUserSuccess, getUserPostsSuccess, isLoading } =
+  userSlice.actions;
 export default userSlice.reducer;

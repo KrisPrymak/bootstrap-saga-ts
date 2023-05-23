@@ -12,30 +12,30 @@ interface IPostItemProps {
 
 const PostItem: React.FC<IPostItemProps> = ({ post }) => {
 
-    const navigate = useNavigate()
-    const dispatch = useAppDispatch()
-    const params = useParams()
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const params = useParams();
     const currentUser = params.userId;
 
     const handleUserPageClick = (id: any) => {
-        navigate(`/userPage/${id}`)
-        dispatch(getUser(id))
+        navigate(`/userPage/${id}`);
+        dispatch(getUser(id));
     }
 
     return (
         <Card style={{ width: "100%" }} className="m-2" border='primary'>
             <Card.Header className="d-flex align-items-center">
-                {currentUser ? false : (
-                     <Nav>
-                     <NavLink onClick={() => { handleUserPageClick(post.userId) }}>
-                         <Image
-                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
-                             width={32}
-                             rounded
-                             className="me-2"
-                         />
-                     </NavLink>
-                 </Nav>
+                {post.userId && currentUser ? false : (
+                    <Nav>
+                        <NavLink onClick={() => { handleUserPageClick(post.userId) }}>
+                            <Image
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
+                                width={32}
+                                rounded
+                                className="me-2"
+                            />
+                        </NavLink>
+                    </Nav>
                 )}
                 <Card.Title>{post.title}</Card.Title>
             </Card.Header>
@@ -43,7 +43,7 @@ const PostItem: React.FC<IPostItemProps> = ({ post }) => {
                 <Card.Text>
                     {post.body}
                 </Card.Text>
-                <Comments />
+                <Comments postId={post.userId} />
             </Card.Body>
         </Card>
     );
