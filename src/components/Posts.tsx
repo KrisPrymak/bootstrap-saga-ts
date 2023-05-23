@@ -1,13 +1,21 @@
 import React from 'react';
 import PostItem from './PostItem';
+import { Container } from 'react-bootstrap';
+import { IPostItem } from '../store/postsSlice';
 
-const Posts = () => {
+interface IPostsProps {
+    postList: Array<IPostItem>
+}
+
+const Posts: React.FC<IPostsProps> = ({ postList }) => {
     return (
-        <div>
-            <PostItem />
-            <PostItem />
-            <PostItem />
-        </div>
+        <Container className="card-columns">
+            {postList.map(post => {
+                return (
+                    <PostItem key={post.id} post={post} />
+                )
+            })}
+        </Container>
     );
 };
 

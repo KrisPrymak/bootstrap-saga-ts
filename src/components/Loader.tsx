@@ -3,7 +3,7 @@ import { Spinner } from 'react-bootstrap';
 
 const Loader = () => {
     return (
-        <Spinner animation="border" variant="primary"/>
+        <Spinner animation="border" variant="primary" className='d-flex m-auto'/>
     );
 };
 

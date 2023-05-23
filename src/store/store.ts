@@ -4,6 +4,8 @@ import postsSlice, { GET_POSTS, getPostsSaga } from './postsSlice';
 import { takeEvery } from "redux-saga/effects";
 import commentsSlice, { GET_COMMENTS, getCommentsSaga } from "./commentsSlice";
 import userSlice, { GET_USER, getUserSaga } from './userSlice';
+import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -23,3 +25,8 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(sagas);
+
+export type RootState = ReturnType<typeof store.getState>
+
+export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
