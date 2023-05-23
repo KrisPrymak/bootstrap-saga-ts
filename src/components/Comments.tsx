@@ -15,7 +15,7 @@ const Comments: React.FC<ICommentsProps> = ({ postId }) => {
     const loadingStatus = useAppSelector(state => state.commentsSlice.loading);
     const commentList = useAppSelector(state => state.commentsSlice.list);
 
-    const handleGetComments = (postId: any) => {
+    const handleGetComments = (postId: number) => {
         dispatch(getComments(postId));
     }
 

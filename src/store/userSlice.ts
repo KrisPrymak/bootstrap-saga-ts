@@ -1,4 +1,4 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAction, createSlice } from "@reduxjs/toolkit";
 import { IPostItem } from "./postsSlice";
 import { delay, put } from "redux-saga/effects";
 import { AxiosResponse } from "axios";
@@ -44,13 +44,13 @@ const initialState: IPostState = {
   loading: false,
 };
 
-export function* getUserSaga(payload: any) {
+export function* getUserSaga(action: PayloadAction<number>) {
   yield put(isLoading(true));
   yield delay(500);
-  const responseUser: AxiosResponse = yield userAPI.getUser(payload.payload);
+  const responseUser: AxiosResponse = yield userAPI.getUser(action.payload);
   yield put(getUserSuccess(responseUser.data));
   const responsePosts: AxiosResponse = yield postsAPI.getUserPosts(
-    payload.payload
+    action.payload
   );
   yield put(getUserPostsSuccess(responsePosts.data));
   yield put(isLoading(false));
@@ -75,7 +75,7 @@ const userSlice = createSlice({
 });
 
 export const GET_USER = "users/getUser";
-export const getUser = createAction(GET_USER);
+export const getUser: (id: number) => {type: 'users/getUser'} = createAction(GET_USER);
 
 export const { getUserSuccess, getUserPostsSuccess, isLoading } =
   userSlice.actions;

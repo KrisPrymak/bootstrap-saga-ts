@@ -17,7 +17,7 @@ const PostItem: React.FC<IPostItemProps> = ({ post }) => {
     const params = useParams();
     const currentUser = params.userId;
 
-    const handleUserPageClick = (id: any) => {
+    const handleUserPageClick = (id: number) => {
         navigate(`/userPage/${id}`);
         dispatch(getUser(id));
     }
