@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/bootstrap-saga-ts/static/css/main.44f8b8b5.css",
+    "main.js": "/bootstrap-saga-ts/static/js/main.7f61f902.js",
+    "static/media/user.png": "/bootstrap-saga-ts/static/media/user.551d20687d701a17c943.png",
+    "index.html": "/bootstrap-saga-ts/index.html",
+    "main.44f8b8b5.css.map": "/bootstrap-saga-ts/static/css/main.44f8b8b5.css.map",
+    "main.7f61f902.js.map": "/bootstrap-saga-ts/static/js/main.7f61f902.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44f8b8b5.css",
+    "static/js/main.7f61f902.js"
+  ]
+}
