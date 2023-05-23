@@ -21,7 +21,7 @@ interface ICompany {
   bs: string;
 }
 
-interface IUser {
+export interface IUser {
   id: number;
   name: string;
   username: string;

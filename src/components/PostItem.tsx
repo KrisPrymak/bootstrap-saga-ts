@@ -3,6 +3,8 @@ import { Card, Image, Nav, NavLink } from 'react-bootstrap';
 import { IPostItem } from '../store/postsSlice';
 import Comments from './Comments';
 import { useNavigate } from 'react-router';
+import { useAppDispatch } from '../store/store';
+import { getUser } from '../store/userSlice';
 
 interface IPostItemProps {
     post: IPostItem
@@ -11,9 +13,11 @@ interface IPostItemProps {
 const PostItem: React.FC<IPostItemProps> = ({ post }) => {
 
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
-    const handleUserPageClick = (id: number) => {
+    const handleUserPageClick = (id: any) => {
         navigate(`/userPage/${id}`)
+        dispatch(getUser(id))
     }
 
     return (
