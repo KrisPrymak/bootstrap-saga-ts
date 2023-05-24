@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 const Navibar = () => {
 
     const navigate = useNavigate();
-    const currentPathName = window.location.pathname;
+    const currentHash = window.location.hash;
 
     return (
         <Navbar collapseOnSelect
@@ -15,7 +15,7 @@ const Navibar = () => {
             variant="dark"
             className="mb-4">
             <Container>
-                {currentPathName === '/aboutMe' || currentPathName === '/'
+                {currentHash === "#/aboutMe" || currentHash === '' || currentHash === '#/'
                     ?
                     <>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
