@@ -1,8 +1,10 @@
-import { PayloadAction, createAction, createSlice } from "@reduxjs/toolkit";
-import { IPostItem } from "./postsSlice";
-import { delay, put } from "redux-saga/effects";
-import { AxiosResponse } from "axios";
-import { postsAPI, userAPI } from "../api/api";
+import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
+import { delay, put } from 'redux-saga/effects';
+import { AxiosResponse } from 'axios';
+
+import { postsAPI, userAPI } from '../api/api';
+
+import { IPostItem } from './postsSlice';
 
 interface IAddress {
   street: string;
@@ -50,23 +52,23 @@ export function* getUserSaga(action: PayloadAction<number>) {
   const responseUser: AxiosResponse = yield userAPI.getUser(action.payload);
   yield put(getUserSuccess(responseUser.data));
   const responsePosts: AxiosResponse = yield postsAPI.getUserPosts(
-    action.payload
+    action.payload,
   );
   yield put(getUserPostsSuccess(responsePosts.data));
   yield put(isLoading(false));
 }
 
 const userSlice = createSlice({
-  name: "users",
+  name: 'users',
   initialState,
   reducers: {
     getUserSuccess: (state, action) => {
       state.user = action.payload;
-      localStorage.setItem("currentUser", JSON.stringify(action.payload));
+      localStorage.setItem('currentUser', JSON.stringify(action.payload));
     },
     getUserPostsSuccess: (state, action) => {
       state.posts = action.payload;
-      localStorage.setItem("currentUserPosts", JSON.stringify(action.payload));
+      localStorage.setItem('currentUserPosts', JSON.stringify(action.payload));
     },
     isLoading: (state, action) => {
       state.loading = action.payload;
@@ -74,7 +76,7 @@ const userSlice = createSlice({
   },
 });
 
-export const GET_USER = "users/getUser";
+export const GET_USER = 'users/getUser';
 export const getUser: (id: number) => {type: 'users/getUser'} = createAction(GET_USER);
 
 export const { getUserSuccess, getUserPostsSuccess, isLoading } =

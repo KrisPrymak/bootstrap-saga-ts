@@ -12,15 +12,15 @@ interface ICommentItemProps {
 }
 
 const CommentItem: React.FC<ICommentItemProps> = ({ comment }) => {
-    return (
-        <Card style={{ width: "80%" }} className='mb-3'>
-            <Card.Body>
-                <Card.Title>{comment.email}</Card.Title>
-                <Card.Text>{comment.body}
-                </Card.Text>
-            </Card.Body>
-        </Card>
-    );
+  return (
+    <Card style={{ width: '80%' }} className="mb-3">
+      <Card.Body>
+        <Card.Title>{comment.email}</Card.Title>
+        <Card.Text>{comment.body}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
 };
 
 export default CommentItem;

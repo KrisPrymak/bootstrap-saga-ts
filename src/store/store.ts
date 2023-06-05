@@ -1,11 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
-import postsSlice, { GET_POSTS, getPostsSaga } from "./postsSlice";
-import { takeEvery } from "redux-saga/effects";
-import commentsSlice, { GET_COMMENTS, getCommentsSaga } from "./commentsSlice";
-import userSlice, { GET_USER, getUserSaga } from "./userSlice";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { takeEvery } from 'redux-saga/effects';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import postsSlice, { GET_POSTS, getPostsSaga } from './postsSlice';
+import commentsSlice, { GET_COMMENTS, getCommentsSaga } from './commentsSlice';
+import userSlice, { GET_USER, getUserSaga } from './userSlice';
+
 
 const sagaMiddleware = createSagaMiddleware();
 

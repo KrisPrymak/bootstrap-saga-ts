@@ -1,6 +1,7 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
-import { delay, put } from "redux-saga/effects";
-import { postsAPI } from "../api/api";
+import { createAction, createSlice } from '@reduxjs/toolkit';
+import { delay, put } from 'redux-saga/effects';
+
+import { postsAPI } from '../api/api';
 
 export interface IPostItem {
   userId: number;
@@ -28,7 +29,7 @@ export function* getPostsSaga(): any {
 }
 
 const postsSlice = createSlice({
-  name: "posts",
+  name: 'posts',
   initialState,
   reducers: {
     getPostsSuccess: (state, action) => {
@@ -40,7 +41,7 @@ const postsSlice = createSlice({
   },
 });
 
-export const GET_POSTS = "posts/getPosts";
+export const GET_POSTS = 'posts/getPosts';
 export const getPosts = createAction(GET_POSTS);
 
 export const { getPostsSuccess, isLoading } = postsSlice.actions;

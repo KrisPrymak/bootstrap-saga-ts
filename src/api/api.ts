@@ -1,8 +1,8 @@
-import { instance } from "./axios";
+import { instance } from './axios';
 
 export const postsAPI = {
   async getPosts() {
-    return instance.get("/posts");
+    return instance.get('/posts');
   },
   async getUserPosts(userId: number) {
     return instance.get(`/posts?userId=${userId}`);
@@ -16,7 +16,7 @@ export const commentsAPI = {
 };
 
 export const userAPI = {
-    async getUser(userId: number) {
-      return instance.get(`/users/${userId}`);
-    },
-  };
+  async getUser(userId: number) {
+    return instance.get(`/users/${userId}`);
+  },
+};

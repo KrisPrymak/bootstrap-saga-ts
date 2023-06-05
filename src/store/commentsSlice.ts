@@ -1,7 +1,8 @@
-import { PayloadAction, createAction, createSlice } from "@reduxjs/toolkit";
-import { AxiosResponse } from "axios";
-import { delay, put } from "redux-saga/effects";
-import { commentsAPI } from "../api/api";
+import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
+import { AxiosResponse } from 'axios';
+import { delay, put } from 'redux-saga/effects';
+
+import { commentsAPI } from '../api/api';
 
 export interface ICommentItem {
   postId: number;
@@ -30,19 +31,19 @@ export function* getCommentsSaga(action: PayloadAction<number>) {
   yield put(isLoading(true));
   yield delay(500);
   const response: AxiosResponse = yield commentsAPI.getComments(
-    action.payload
+    action.payload,
   );
   yield put(getCommentsSuccess(response.data));
   yield put(isLoading(false));
 }
 
 const commentsSlice = createSlice({
-  name: "comments",
+  name: 'comments',
   initialState,
   reducers: {
     getCommentsSuccess: (state, action) => {
       const index = state.list.findIndex(
-        (item) => item.postId === action.payload[0].postId
+        (item) => item.postId === action.payload[0].postId,
       );
       index === -1 &&
         state.list.push({
@@ -56,7 +57,7 @@ const commentsSlice = createSlice({
   },
 });
 
-export const GET_COMMENTS = "comments/getComments";
+export const GET_COMMENTS = 'comments/getComments';
 export const getComments: (postId: number) => {type: 'comments/getComments'} = createAction(GET_COMMENTS);
 
 export const { getCommentsSuccess, isLoading } = commentsSlice.actions;
