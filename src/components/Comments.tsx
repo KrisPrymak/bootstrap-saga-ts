@@ -26,11 +26,15 @@ const Comments: React.FC<ICommentsProps> = ({ postId }) => {
       <Accordion.Item eventKey="0" onClick={() => handleGetComments(postId)}>
         <Accordion.Header>Комментарии</Accordion.Header>
         <Accordion.Body className="cards-columns">
-          {loadingStatus ? <Loader /> : commentList.map(item => item.postId === postId ? item.contentList.map(comment => {
-            return (
-              <CommentItem key={comment.id} comment={comment} />
-            );
-          }) : false)}
+          {loadingStatus 
+            ? 
+            <Loader /> 
+            : 
+            commentList.map(item => item.postId === postId ? item.contentList.map(comment => {
+              return (
+                <CommentItem key={comment.id} comment={comment} />
+              );
+            }) : false)}
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
